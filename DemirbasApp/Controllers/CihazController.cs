@@ -1,3 +1,4 @@
+using DemirbasApp.Models;
 using DemirbasApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,5 +18,22 @@ public class CihazController : Controller
     {
         var cihazlar = await _context.Cihazlar.ToListAsync();
         return View(cihazlar);
+    }
+
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(Cihaz cihaz)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Cihazlar.Add(cihaz);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        return View(cihaz);
     }
 }

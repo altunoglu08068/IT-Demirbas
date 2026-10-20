@@ -1,5 +1,7 @@
 @model List<DemirbasApp.Models.Cihaz>
 
+<a asp-action="Create">Yeni Cihaz</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +19,7 @@
                 <td>@cihaz.Marka</td>
                 <td>@cihaz.Model</td>
                 <td>@cihaz.SeriNo</td>
-                <td>@cihaz.AlimTarihi</td>
+                <td>@cihaz.AlimTarihi.ToString("yyyy-MM-dd")</td>
                 <td>@cihaz.Durum</td>
             </tr>
         }
