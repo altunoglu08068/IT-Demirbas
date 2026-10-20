@@ -1,0 +1,25 @@
+@model List<DemirbasApp.Models.Cihaz>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Seri No</th>
+            <th>Alım Tarihi</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cihaz in Model)
+        {
+            <tr>
+                <td>@cihaz.Marka</td>
+                <td>@cihaz.Model</td>
+                <td>@cihaz.SeriNo</td>
+                <td>@cihaz.AlimTarihi</td>
+                <td>@cihaz.Durum</td>
+            </tr>
+        }
+    </tbody>
+</table>
