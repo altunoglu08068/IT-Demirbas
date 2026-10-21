@@ -10,6 +10,7 @@
             <th>Seri No</th>
             <th>Alım Tarihi</th>
             <th>Durum</th>
+            <th>İşlemler</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,10 @@
                 <td>@cihaz.SeriNo</td>
                 <td>@cihaz.AlimTarihi.ToString("yyyy-MM-dd")</td>
                 <td>@cihaz.Durum</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@cihaz.Id">Düzenle</a> |
+                    <a asp-action="Delete" asp-route-id="@cihaz.Id">Sil</a>
+                </td>
             </tr>
         }
     </tbody>

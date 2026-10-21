@@ -36,4 +36,31 @@ public class CihazController : Controller
         }
         return View(cihaz);
     }
+
+    public async Task<IActionResult> Edit(int id)
+    {
+        var cihaz = await _context.Cihazlar.FindAsync(id);
+        if (cihaz == null)
+        {
+            return NotFound();
+        }
+        return View(cihaz);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(int id, Cihaz cihaz)
+    {
+        if (id != cihaz.Id)
+        {
+            return NotFound();
+        }
+
+        if (ModelState.IsValid)
+        {
+            _context.Cihazlar.Update(cihaz);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        return View(cihaz);
+    }
 }
