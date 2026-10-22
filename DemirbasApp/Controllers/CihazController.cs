@@ -63,4 +63,28 @@ public class CihazController : Controller
         }
         return View(cihaz);
     }
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        var cihaz = await _context.Cihazlar.FindAsync(id);
+        if (cihaz == null)
+        {
+            return NotFound();
+        }
+        return View(cihaz);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var cihaz = await _context.Cihazlar.FindAsync(id);
+        if (cihaz == null)
+        {
+            return NotFound();
+        }
+
+        _context.Cihazlar.Remove(cihaz);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
 }

@@ -1,0 +1,14 @@
+@model DemirbasApp.Models.Cihaz
+
+<h1>Cihazı Sil</h1>
+<p>Bu cihazı silmek istediğinizden emin misiniz?</p>
+
+<p>Marka: @Model.Marka</p>
+<p>Model: @Model.Model</p>
+<p>Seri No: @Model.SeriNo</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+</form>
+<a asp-action="Index">Vazgeç</a>
